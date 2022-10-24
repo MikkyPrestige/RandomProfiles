@@ -2,6 +2,8 @@
 Set up client-side pagination using randomuser.me API in one of your routes called Users - you should show the prev, next, and navigation to individual pages 1, 2, 3, 4, 5 etc. Implement accessibility and disabled state and API loading states. ============================================ */
 
 import { useEffect, useState } from "react";
+// import Filter from "./filter";
+import "../assets/styles/users.css";
 
 const Users = () => {  // 1. Create a component called Users
   const [users, setUsers] = useState([]);  // 2. Create a state variable called users and set it to an empty array
@@ -23,34 +25,35 @@ const Users = () => {  // 1. Create a component called Users
       });
   }, [page]);  // 14. Add the page state variable to the dependency array so that the useEffect hook will run when the page state variable changes 
 
-  if (loading) return <div>Loading...</div>;  // 15. If the loading state variable is true, return the text Loading...  
-  if (error) return <div>{error.message}</div>; // 16. If the error state variable is true, return the error message returned from the API call 
+  if (loading) return <div className="loading">Loading...</div>;  // 15. If the loading state variable is true, return the text Loading...  
+  if (error) return <div className="error_msg">{error.message}</div>; // 16. If the error state variable is true, return the error message returned from the API call 
 
   return (  // 17. Return the users state variable to the UI
-    <div>
-      <h1>Users</h1>
-      <button
+    <div className="users">
+      <h1 className="users__heading">Users</h1>
+      {/* <Filter />   */}
+      <button className="users__btn"
         onClick={() => setPage((prevPage) => Math.max(prevPage - 1, 1))}
         disabled={page === 1}>Prev</button>  {/* 18. Create a button that will decrease the page state variable by 1 when clicked and disable the button if the page state variable is 1 */}
-      <span>{page}</span>  {/* 19. Display the page state variable */}
-      <button
+      <span className="users__page">{page}</span>  {/* 19. Display the page state variable */}
+      <button className="users__btn"
         onClick={() => setPage((prevPage) => (!users.length ? prevPage : prevPage + 1))}
         disabled={!users.length}>Next</button> {/* 20. Create a button that will increase the page state variable by 1 when clicked and disable the button if the users state variable is empty*/}
-      <ul>  {/* 21. Create a list of users returned from the API call */}
+      <ul className="users__list">  {/* 21. Create a list of users returned from the API call */}
         {users.map((user) => {   // 22. Map over the users state variable and return the user's name, email, and phone number to the UI 
-          const { name, gender, nat, location, login, email, dob, phone, picture } = user; // 23. Destructure the user object to get the login, name, and picture properties  
+          const { name, gender, nat, location, login, email, dob, phone, picture } = user; // 23. Destructure the user object to get the login, name, picture etc properties  
           return (
-            <li key={login.uuid}>  {/* 24. Create a list item for each user returned from the API call */}
-              <img src={picture.large} alt={name.first} /> {/* 25. Display the user's picture */}
-              <p><strong>Name:</strong> {name.title}, {name.first} {name.last}</p> {/* 26. Display the user's first and last name */}
-              <p><strong>Gender:</strong> {gender}</p>
-              <p><strong>Username:</strong> {login.username}</p> {/* 27. Display the user's username and password */}
-              <p><strong>Age</strong> {dob.age}</p>
-              <p><strong>Email:</strong> {email}</p>  {/* 28. Display the user's email and phone number */}
-              <p><strong>Phone:</strong> {phone}</p>
-              <p><strong>Nationality:</strong> {nat}</p>
-              <p><strong>Location:</strong> {location.city}, {location.state}, {location.country}, {location.postcode}</p>
-              <p><strong>Time-zone:</strong> {location.timezone.offset}, {location.timezone.description}</p>
+            <li key={login.uuid} className="user__items">  {/* 24. Create a list item for each user returned from the API call */}
+              <img src={picture.large} alt={name.first} className="user__img" /> {/* 25. Display the user's picture */}
+              <p className="user__item"><strong>Name:</strong> {name.title}, {name.first} {name.last}</p> {/* 26. Display the user's first and last name */}
+              <p className="user__item"><strong>Gender:</strong> {gender}</p>
+              <p className="user__item"><strong>Username:</strong> {login.username}</p> {/* 27. Display the user's username and password */}
+              <p className="user__item"><strong>Age</strong> {dob.age}</p>
+              <p className="user__item"><strong>Email:</strong> {email}</p>  {/* 28. Display the user's email and phone number */}
+              <p className="user__item"><strong>Phone:</strong> {phone}</p>
+              <p className="user__item"><strong>Nationality:</strong> {nat}</p>
+              <p className="user__item"><strong>Location:</strong> {location.city}, {location.state}, {location.country}, {location.postcode}</p>
+              <p className="user__item"><strong>Time-zone:</strong> {location.timezone.offset}, {location.timezone.description}</p>
             </li>
           );
         })}

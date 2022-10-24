@@ -35,7 +35,7 @@
   background-color: #0f4cbe;
 }
 
-.users {
+.home--users {
   text-align: center;
   border: 2px solid #0652dd;
   border-radius: 2rem;
@@ -45,16 +45,16 @@
   height: min-content;
 }
 
-.users__text {
+.home--users__text {
   font-style: italic;
   color: #0652dd;
 }
 
-.user__img {
+.home--user__img {
   display: flex;
 }
 
-.users__wrapper {
+.home--users__wrapper {
   display: flex;
   justify-content: space-around;
 }

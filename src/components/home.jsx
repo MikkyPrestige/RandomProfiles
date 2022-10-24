@@ -28,16 +28,16 @@ const Home = () => {
         <p className="desc__paragraph">Finding great friends isn't easy, and it doesn't have to be. With Random User, you can connect with people all over the world for no cost. Random Users is the best place to find new friends all around the world. Join now!</p>
         <button className="desc__cta">Get started</button>
       </div>
-      <div className="users">
-        <h2 className="users__heading">Random friend finder</h2>
-        <p className="users__text">Find new friends from every country and every race of the world</p>
-        <div className="users__wrapper">
+      <div className="home--users">
+        <h2 className="home--users__heading">Random friend finder</h2>
+        <p className="home--users__text">Find new friends from every country and every race of the world</p>
+        <div className="home--users__wrapper">
           {loading && <h2>Loading...</h2>}
           {error && <h2>{error.message}</h2>}
           {users.map((user) => {
             const { picture, name } = user;
             return (
-              <div className="user__img">
+              <div className="home--user__img">
                 <img src={picture.medium} alt={name.first} className="img" />
               </div>
             );
