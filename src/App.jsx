@@ -1,14 +1,14 @@
 import * as React from "react";
 import { ErrorBoundary } from "react-error-boundary";
-// import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import ErrorFallback from "./components/errorFallback";
-import Filter from "./components/filter";
+// import Filter from "./components/filter";
 import Home from "./components/home";
-// import Layout from "./components/layout";
-// import Help from "./components/help";
+import Layout from "./components/layout";
+import Help from "./components/help";
 import Users from "./components/users";
+import About from "./components/about";
 // import Error from "./components/error";
-// import { Route, Routes } from "react-router-dom";
 
 
 
@@ -18,15 +18,14 @@ function App() {
       <div className="App">
          <main>
             <ErrorBoundary FallbackComponent={ErrorFallback}>
-               {/* <Routes>
-                  <Route path="/" element={<Layout />}>
-                     <Route path="users" element={<Users />} /> 
-                    <Route path="*" element={<Error />} />
-                  </Route>
-               </Routes> */}
-               <Home />
-               <Users Filter={Filter} />
-               {/* <Help /> */}
+               <Layout />
+               <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/users" element={<Users />} />
+                  <Route path="/help" element={<Help />} />
+                  <Route path="/about" element={<About />} />
+               </Routes>
+
             </ErrorBoundary>
          </main>
       </div>

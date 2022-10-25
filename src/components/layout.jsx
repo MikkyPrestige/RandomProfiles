@@ -1,37 +1,42 @@
 import { NavLink } from "react-router-dom";
 import "../assets/styles/layout.css";
 
-const NavList = () => {
-  let activeStyle = {   // this is the style that will be applied when the link is active
-    textDecoration: 'none'
+const CustomNavLink = ({ to, ...props }) => {
+  let activeStyle = {
+    textDecoration: 'underline',
+    color: 'red',
   };
 
-  let activeClassName = "active";
+  return (
+    <NavLink
+      style={({ isActive }) =>
+        isActive ? activeStyle : { textDecoration: 'none' }
+      }
+      to={to}
+      end
+      {...props}
+    />
+  );
+};
 
+
+const Layout = () => {
   return (
     <nav className="layout">
       <div className="app-header">
-        <h1>RanDomUsersApp</h1>
+        <h1>RanDomPeopleApp</h1>
       </div>
-      <ul className="nav__items">
-        <li className="nav__item">
-          <NavLink to="/" style={({ isActive }) => isActive ? activeStyle : {}} >Home</NavLink>
-        </li>
-        <li className="nav__item">
-          <NavLink to="/users" style={({ isActive }) => isActive ? activeClassName : { textDecoration: 'none' }}>Users</NavLink>
-        </li>
-        <li className="nav__item">
-          <NavLink to="/about" style={({ isActive }) => isActive ? activeClassName : { textDecoration: 'none' }}>About Us</NavLink>
-        </li>
-        <li className="nav__item">
-          <NavLink to="/help" style={({ isActive }) => isActive ? activeClassName : { textDecoration: 'none' }}>How it works</NavLink>
-        </li>
-      </ul>
+      <div className="nav__items">
+        <CustomNavLink to="/" className="nav__item">Home</CustomNavLink>
+        <CustomNavLink to="/users" className="nav__item">People</CustomNavLink>
+        <CustomNavLink to="about" className="nav__item">About us</CustomNavLink>
+        <CustomNavLink to="/help" className="nav__item">How it works!!!</CustomNavLink>
+      </div>
     </nav>
   );
 }
 
-export default NavList;
+export default Layout;
 //       to={to}              // this is the path to which the link will navigate
 //       end         // this is a boolean that indicates whether the link should be active when the location is matched exactly or not
 //       {...props} />   // this is the props that will be passed to the NavLink component
