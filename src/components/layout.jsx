@@ -28,9 +28,9 @@ const Layout = () => {
       </div>
       <div className="nav__items">
         <CustomNavLink to="/" className="nav__item">Home</CustomNavLink>
-        <CustomNavLink to="/users" className="nav__item">People</CustomNavLink>
+        <CustomNavLink to="users" className="nav__item">People</CustomNavLink>
         <CustomNavLink to="about" className="nav__item">About us</CustomNavLink>
-        <CustomNavLink to="/help" className="nav__item">How it works!!!</CustomNavLink>
+        <CustomNavLink to="help" className="nav__item">How it works!!!</CustomNavLink>
       </div>
     </nav>
   );

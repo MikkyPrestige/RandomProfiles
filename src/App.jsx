@@ -8,8 +8,8 @@ import Layout from "./components/layout";
 import Help from "./components/help";
 import Users from "./components/users";
 import About from "./components/about";
-// import Error from "./components/error";
-
+import Error from "./components/error";
+import UserDetails from "./components/userDetails";
 
 
 function App() {
@@ -21,11 +21,13 @@ function App() {
                <Layout />
                <Routes>
                   <Route path="/" element={<Home />} />
-                  <Route path="/users" element={<Users />} />
-                  <Route path="/help" element={<Help />} />
-                  <Route path="/about" element={<About />} />
+                  <Route path="users" element={<Users />}>
+                     <Route path="userDetails" element={<UserDetails />} />
+                  </Route>
+                  <Route path="help" element={<Help />} />
+                  <Route path="about" element={<About />} />
+                  <Route path="*" element={<Error />} />
                </Routes>
-
             </ErrorBoundary>
          </main>
       </div>

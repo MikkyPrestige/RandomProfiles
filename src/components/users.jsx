@@ -1,7 +1,8 @@
 /*==========================================
 Set up client-side pagination using randomuser.me API in one of your routes called Users - you should show the prev, next, and navigation to individual pages 1, 2, 3, 4, 5 etc. Implement accessibility and disabled state and API loading states. ============================================ */
-
 import { useEffect, useState } from "react";
+import { Link, Outlet } from "react-router-dom";
+import Profile from "./profile";
 // import Filter from "./filter";
 import "../assets/styles/users.css";
 
@@ -20,14 +21,12 @@ const Users = () => {  // 1. Create a component called Users
         setUsers(data.results);  // 10. Set the users state variable to the data returned from the API call 
         setLoading(false);   // 11. Set the loading state variable to false after the API call is made  
       })
-      .catch((err) => {
-        setError(err);    // 12. Set the error state variable to the error returned from the API call 
-        setLoading(false);  // 13. Set the loading state variable to false after the API call is made 
+      .catch((err) => {   // 12. Catch any errors that may occur during the API call and set the error state variable to the error message
+        setError(err);   // 12. Set the error state variable to the error message
+        setLoading(false);   // 13. Set the loading state variable to false after the API call is made
       });
   }, [page]);  // 14. Add the page state variable to the dependency array so that the useEffect hook will run when the page state variable changes 
-
-  if (loading) return <div className="loading">LOADING...</div>;  // 15. If the loading state variable is true, return the text Loading...  
-  if (error) return <div className="error_msg">{error.message}</div>; // 16. If the error state variable is true, return the error message returned from the API call 
+  localStorage.setItem("user", JSON.stringify(users));  // 15. Store the users state variable in local storage called user so that it can be accessed by the UserDetails component 
 
   return (  // 17. Return the users state variable to the UI
     <div className="users">
@@ -42,20 +41,21 @@ const Users = () => {  // 1. Create a component called Users
           disabled={!users.length}>Next</button> {/* 20. Create a button that will increase the page state variable by 1 when clicked and disable the button if the users state variable is empty*/}
       </div>
       <ul className="users__list">  {/* 21. Create a list of users returned from the API call */}
+        {loading && <h2>Loading...</h2>}
+        {error && <h2>{error.message}</h2>}
         {users.map((user) => {   // 22. Map over the users state variable and return the user's name, email, and phone number to the UI 
-          const { name, gender, nat, location, login, email, dob, phone, picture } = user; // 23. Destructure the user object to get the login, name, picture etc properties  
+          const { name, gender, nat, login, dob, picture } = user; // 23. Destructure the user object to get the login, name, picture etc properties  
           return (
             <li key={login.uuid} className="user__items">  {/* 24. Create a list item for each user returned from the API call */}
               <img src={picture.large} alt={name.first} className="user__img" /> {/* 25. Display the user's picture */}
               <p className="user__item"><strong>Name: </strong>{name.title}, {name.first} {name.last}</p> {/* 26. Display the user's first and last name */}
               <p className="user__item"><strong>Gender: </strong>{gender}</p>
-              <p className="user__item"><strong>Username: </strong>{login.username}</p> {/* 27. Display the user's username and password */}
               <p className="user__item"><strong>Age: </strong> {dob.age}</p>
-              <p className="user__item"><strong>Email: </strong>{email}</p>  {/* 28. Display the user's email and phone number */}
-              <p className="user__item"><strong>Phone: </strong>{phone}</p>
               <p className="user__item"><strong>Nationality: </strong>{nat}</p>
-              <p className="user__item"><strong>Location: </strong>{location.city}, {location.state}, {location.country}, {location.postcode}</p>
-              <p className="user__item"><strong>Time-zone: </strong>{location.timezone.offset}, {location.timezone.description}</p>
+              {/* // 27. Display the user's profile component when the user's name is clicked  */}
+              <Profile user={user} />
+              {/* <Link to={`userDetails/${user}`}>View Profile</Link>  */}
+              <Outlet />
             </li>
           );
         })}
