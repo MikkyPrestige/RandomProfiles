@@ -2,23 +2,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const UserDetails = (props) => {
+const UserDetails = (Users) => {
  // const { user } = props.location.state;  // Get the user data from the state passed from the users component
- const user = JSON.parse(localStorage.getItem('users')); // Get the user data from the local storage set in the users component 
+ // const user = JSON.parse(localStorage.getItem('users')); // Get the user data from the local storage set in the users component 
 
  return (
   <div className="user-details">
    <h1>Profile Details</h1>
    <div className="user-details__profile">
     <div className="user-details__profile__image">
-     <img src={user.picture.large} alt={user.name.first} />
+     {/* <img src={Users.picture.medium} alt={Users.name.first} /> */}
     </div>
     <div className="user-details__profile__info">
-     <h2>{user.name.first} {user.name.last}</h2>
-     <p>{user.email}</p>
-     <p>{user.phone}</p>
-     <p>{user.location.street.number} {user.location.street.name}, {user.location.city}, {user.location.state}, {user.location.country}</p>
-     <p>{user.dob.age} years old</p>
+     <h2>{Users.name.first} {Users.name.last}</h2>
+     <p>{Users.email}</p>
+     <p>{Users.phone}</p>
+     <p>{Users.location.street.number} {Users.location.street.name}, {Users.location.city}, {Users.location.state}, {Users.location.country}</p>
+     <p>{Users.dob.age} years old</p>
     </div>
    </div>
    <Link to="/">Back to Users</Link>

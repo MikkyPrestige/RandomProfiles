@@ -1,8 +1,9 @@
 /*==========================================
 Set up client-side pagination using randomuser.me API in one of your routes called Users - you should show the prev, next, and navigation to individual pages 1, 2, 3, 4, 5 etc. Implement accessibility and disabled state and API loading states. ============================================ */
 import { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
-import Profile from "./profile";
+// import { Link, Outlet } from "react-router-dom";
+// import Profile from "./profile";
+// import UserDetails from "./userDetails";
 // import Filter from "./filter";
 import "../assets/styles/users.css";
 
@@ -26,7 +27,7 @@ const Users = () => {  // 1. Create a component called Users
         setLoading(false);   // 13. Set the loading state variable to false after the API call is made
       });
   }, [page]);  // 14. Add the page state variable to the dependency array so that the useEffect hook will run when the page state variable changes 
-  localStorage.setItem("user", JSON.stringify(users));  // 15. Store the users state variable in local storage called user so that it can be accessed by the UserDetails component 
+  // localStorage.setItem("user", JSON.stringify(users));  // 15. Store the users state variable in local storage called user so that it can be accessed by the UserDetails component 
 
   return (  // 17. Return the users state variable to the UI
     <div className="users">
@@ -40,45 +41,50 @@ const Users = () => {  // 1. Create a component called Users
           onClick={() => setPage((prevPage) => (!users.length ? prevPage : prevPage + 1))}
           disabled={!users.length}>Next</button> {/* 20. Create a button that will increase the page state variable by 1 when clicked and disable the button if the users state variable is empty*/}
       </div>
-      <ul className="users__list">  {/* 21. Create a list of users returned from the API call */}
+      <div className="">
         {loading && <h2>Loading...</h2>}
         {error && <h2>{error.message}</h2>}
-        {users.map((user) => {   // 22. Map over the users state variable and return the user's name, email, and phone number to the UI 
-          const { name, gender, nat, login, dob, picture } = user; // 23. Destructure the user object to get the login, name, picture etc properties  
-          return (
-            <li key={login.uuid} className="user__items">  {/* 24. Create a list item for each user returned from the API call */}
-              <img src={picture.large} alt={name.first} className="user__img" /> {/* 25. Display the user's picture */}
-              <p className="user__item"><strong>Name: </strong>{name.title}, {name.first} {name.last}</p> {/* 26. Display the user's first and last name */}
-              <p className="user__item"><strong>Gender: </strong>{gender}</p>
-              <p className="user__item"><strong>Age: </strong> {dob.age}</p>
-              <p className="user__item"><strong>Nationality: </strong>{nat}</p>
-              {/* // 27. Display the user's profile component when the user's name is clicked  */}
-              <Profile user={user} />
-              {/* <Link to={`userDetails/${user}`}>View Profile</Link>  */}
-              <Outlet />
-            </li>
-          );
-        })}
-      </ul>
-      <div className="bottom__btn">
-        {
-          <button className="btn active"
-            disabled={page <= 1}
-            onClick={() => setPage((prev) => prev - 1)}> prev </button>}
-        {Array.from({ length: pages }, (value, index) => index + 1).map(
-          (each) => (
-            <button className="btn__array active" onClick={() => setPage(each)}>{each}</button>
-          )
-        )}
-        {
-          <button className="btn"
-            disabled={page >= pages}
-            aria-disabled={page >= pages}  //
-            onClick={() => setPage((prev) => prev + 1)}> next </button>}
+        <ul ul className="users__list">
+          {users.map((user) => {
+            const { name, gender, nat, login, dob, picture, phone, email, location } = user;
+            return (
+              <li key={login.uuid} className="user__items">
+                <img src={picture.large} alt={name.first} className="user__img" />
+                <p className="user__item"><strong>Name: </strong>{name.title}, {name.first} {name.last}</p>
+                <p className="user__item"><strong>Gender: </strong>{gender}</p>
+                <p className="user__item"><strong>Age: </strong> {dob.age}</p>
+                <p className="user__item"><strong>Username: </strong>{login.username}</p>
+                <p className="user__item"><strong>Email: </strong>{email}</p>
+                <p className="user__item"><strong>Phone: </strong>{phone}</p>
+                <p className="user__item"><strong>Nationality: </strong>{nat}</p>
+                <p className="user__item"><strong>Country: </strong>{location.country}</p>
+                <p className="user__item"><strong>Address: </strong>{location.street.number} {location.street.name}, {location.city}, {location.state}, {location.postcode}</p>
+                <p className="user__item"><strong>Timezone: </strong>{location.timezone.offset}, {location.timezone.description}</p>
+                <p className="user__item"><strong>Coordinates: </strong>{location.coordinates.latitude} - {location.coordinates.longitude}</p>
+              </li>
+            );
+          })}
+        </ul>
+        <div className="bottom__btn">
+          {
+            <button className="btn active"
+              disabled={page <= 1}
+              onClick={() => setPage((prev) => prev - 1)}> prev </button>}
+          {Array.from({ length: pages }, (value, index) => index + 1).map(
+            (each) => (
+              <button className="btn__array active" onClick={() => setPage(each)}>{each}</button>
+            )
+          )}
+          {
+            <button className="btn"
+              disabled={page >= pages}
+              aria-disabled={page >= pages}  //
+              onClick={() => setPage((prev) => prev + 1)}> next </button>}
+        </div>
+        <p className="pagination"> Pages: {page} of {pages}  </p>
       </div>
-      <p className="pagination"> Pages: {page} of {pages}  </p>
     </div>
   );
 }
 
-export default Users;  // 29. Export the Users component
+export default Users;
