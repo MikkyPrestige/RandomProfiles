@@ -1,37 +1,33 @@
-// Create a new component called UserDetails that will render the person full profile data gotten from the API call made in users component and will be rendered when a user clicks on a person profile link in the users component  
-import React from 'react';
+
+// import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
+// Get the user data from the state passed from the users component stored in the local storage set in the users component
+// const user = JSON.parse(localStorage.getItem('users'));
+// const handleProfileClick = useCallback(() => { // 1. Create a function called handleProfileClick that will be called when the user clicks on the profile link
+//  onProfileClick(user);   // 2. Call the onProfileClick function that was passed from the users component and pass the user data to it
+// }, [user, onProfileClick]);  // 3. Add the user data and the onProfileClick function to the dependency array of the handleProfileClick function
 
-const UserDetails = (Users) => {
- // const { user } = props.location.state;  // Get the user data from the state passed from the users component
- // const user = JSON.parse(localStorage.getItem('users')); // Get the user data from the local storage set in the users component 
-
+const UserDetails = (props) => {
+ const user = JSON.parse(localStorage.getItem('users')); // Get the user data from the local storage set in the users component
  return (
-  <div className="user-details">
-   <h1>Profile Details</h1>
-   <div className="user-details__profile">
-    <div className="user-details__profile__image">
-     {/* <img src={Users.picture.medium} alt={Users.name.first} /> */}
+  <div className="user__details">
+   <h1 className="user__details__heading">User Details</h1>
+   <div className="user__details__container">
+    <div className="user__details__img">
+     <img src={user.picture.medium} alt="User" />
     </div>
-    <div className="user-details__profile__info">
-     <h2>{Users.name.first} {Users.name.last}</h2>
-     <p>{Users.email}</p>
-     <p>{Users.phone}</p>
-     <p>{Users.location.street.number} {Users.location.street.name}, {Users.location.city}, {Users.location.state}, {Users.location.country}</p>
-     <p>{Users.dob.age} years old</p>
+    <div className="user__details__info">
+     <h2 className="user__details__info__name">{user.name.first} {user.name.last}</h2>
+     <p className="user__details__info__email">{user.email}</p>
+     <p className="user__details__info__phone">{user.phone}</p>
+     <p className="user__details__info__location">{user.location.city}, {user.location.country}</p>
+     <Link to="/users" className="user__details__info__link">Back to users</Link>
     </div>
    </div>
-   <Link to="/">Back to Users</Link>
   </div>
  );
 }
 
+
 export default UserDetails;
 
-
-// const users = JSON.parse(localStorage.getItem("users"));  // Get the users data from the local storage and parse it to JSON format
-//     if (users) {  // If the users data is available in the local storage then set the users state to the users data gotten from the local storage
-//       this.setState({ users });
-// } else {   // If the users data is not available in the local storage then make an API call to get the users data and set the users state to the users data gotten from the API call
-//       this.fetchUsers();
-// } 

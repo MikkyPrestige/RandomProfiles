@@ -1,11 +1,13 @@
 /*==========================================
 Set up client-side pagination using randomuser.me API in one of your routes called Users - you should show the prev, next, and navigation to individual pages 1, 2, 3, 4, 5 etc. Implement accessibility and disabled state and API loading states. ============================================ */
 import { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
 // import { Link, Outlet } from "react-router-dom";
 // import Profile from "./profile";
 // import UserDetails from "./userDetails";
 // import Filter from "./filter";
 import "../assets/styles/users.css";
+import { Link, Outlet } from "react-router-dom";
 
 const Users = () => {  // 1. Create a component called Users
   const [users, setUsers] = useState([]);  // 2. Create a state variable called users and set it to an empty array
@@ -28,6 +30,9 @@ const Users = () => {  // 1. Create a component called Users
       });
   }, [page]);  // 14. Add the page state variable to the dependency array so that the useEffect hook will run when the page state variable changes 
   // localStorage.setItem("user", JSON.stringify(users));  // 15. Store the users state variable in local storage called user so that it can be accessed by the UserDetails component 
+  const setUser = (user) => {
+    localStorage.setItem("users", JSON.stringify(user));
+  }; // 16. Create a function called setUser that will store the user in local storage so that it can be accessed by the UserDetails component
 
   return (  // 17. Return the users state variable to the UI
     <div className="users">
@@ -56,33 +61,38 @@ const Users = () => {  // 1. Create a component called Users
                 <p className="user__item"><strong>Username: </strong>{login.username}</p>
                 <p className="user__item"><strong>Email: </strong>{email}</p>
                 <p className="user__item"><strong>Phone: </strong>{phone}</p>
-                <p className="user__item"><strong>Nationality: </strong>{nat}</p>
-                <p className="user__item"><strong>Country: </strong>{location.country}</p>
-                <p className="user__item"><strong>Address: </strong>{location.street.number} {location.street.name}, {location.city}, {location.state}, {location.postcode}</p>
-                <p className="user__item"><strong>Timezone: </strong>{location.timezone.offset}, {location.timezone.description}</p>
-                <p className="user__item"><strong>Coordinates: </strong>{location.coordinates.latitude} - {location.coordinates.longitude}</p>
+                {/* <p className="user__item"><strong>Nationality: </strong>{nat}</p> */}
+                {/* <p className="user__item"><strong>Country: </strong>{location.country}</p> */}
+                {/* <p className="user__item"><strong>Address: </strong>{location.street.number} {location.street.name}, {location.city}, {location.state}, {location.postcode}</p> */}
+                {/* <p className="user__item"><strong>Timezone: </strong>{location.timezone.offset}, {location.timezone.description}</p> */}
+                {/* <p className="user__item"><strong>Coordinates: </strong>{location.coordinates.latitude} - {location.coordinates.longitude}</p> */}
+                {/* <Profile profile={user} /> */}
+                <button onClick={setUser} className="cta active"><Link to="userDetails">View Profile</Link></button>
               </li>
             );
           })}
         </ul>
+
         <div className="bottom__btn">
           {
             <button className="btn active"
               disabled={page <= 1}
-              onClick={() => setPage((prev) => prev - 1)}> prev </button>}
+              onClick={() => setPage((prev) => prev - 1)}> prev </button>}  {/*21. Create a button that will decrease the page state variable by 1 when clicked and disable the button if the page state variable is less than or equal to 1 */}
           {Array.from({ length: pages }, (value, index) => index + 1).map(
             (each) => (
               <button className="btn__array active" onClick={() => setPage(each)}>{each}</button>
             )
-          )}
+          )}     {/* 22. Map through the pages state variable and create a button for each page clicked on which will set the page state variable to the page index */}
           {
             <button className="btn"
               disabled={page >= pages}
               aria-disabled={page >= pages}  //
-              onClick={() => setPage((prev) => prev + 1)}> next </button>}
+              onClick={() => setPage((prev) => prev + 1)}> next </button>} {/* 23. Create a button that will increase the page state variable by 1 when clicked and disable the button if the page state variable is greater than or equal to the pages state variable */}
         </div>
-        <p className="pagination"> Pages: {page} of {pages}  </p>
+        <p className="pagination"> Pages: {page} of {pages}  </p> {/* 24. Display the page state variable and the pages state variable */}
       </div>
+
+      <Outlet />
     </div>
   );
 }
