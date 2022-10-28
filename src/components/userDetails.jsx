@@ -1,30 +1,40 @@
 
-// import React, { useCallback } from 'react';
-import { Link } from 'react-router-dom';
-// Get the user data from the state passed from the users component stored in the local storage set in the users component
-// const user = JSON.parse(localStorage.getItem('users'));
-// const handleProfileClick = useCallback(() => { // 1. Create a function called handleProfileClick that will be called when the user clicks on the profile link
-//  onProfileClick(user);   // 2. Call the onProfileClick function that was passed from the users component and pass the user data to it
-// }, [user, onProfileClick]);  // 3. Add the user data and the onProfileClick function to the dependency array of the handleProfileClick function
+// import { Link } from 'react-router-dom';
+import Profile from './profile';
+import { useParams } from 'react-router-dom';
 
-const UserDetails = (props) => {
- const user = JSON.parse(localStorage.getItem('users')); // Get the user data from the local storage set in the users component
+const UserDetails = () => {
+ // const Users = JSON.parse(localStorage.getItem("setUsers"));  // 
+ // let { id } = useParams();  // Get the id from the url
+ // let index = Number(id);  // Get the user data from the users array using the id 
+ // let currentUser = Users[index - 1];  // Get the user data from the users array using the id 
+ // let imgSrc = currentUser.picture.medium;  // Get the user image from the user data
+ // let fullName = `${currentUser.name.title} ${currentUser.name.first} ${currentUser.name.last}`;  // Get the user full name from the user data
+ // let email = currentUser.email;  // Get the user email from the user data
+ // let phone = currentUser.phone;  // Get the user phone number from the user data
+ // let userName = currentUser.login.username;  // Get the user username from the user data
+ // let location = `${currentUser.location.street.number} ${currentUser.location.street.name}, ${currentUser.location.city}, ${currentUser.location.state}, ${currentUser.location.country}, ${currentUser.location.postcode}`;  // Get the user location from the user data
+ // let age = currentUser.dob.age;  // Get the user age from the user data
+
  return (
-  <div className="user__details">
-   <h1 className="user__details__heading">User Details</h1>
-   <div className="user__details__container">
-    <div className="user__details__img">
-     <img src={user.picture.medium} alt="User" />
-    </div>
-    <div className="user__details__info">
-     <h2 className="user__details__info__name">{user.name.first} {user.name.last}</h2>
-     <p className="user__details__info__email">{user.email}</p>
-     <p className="user__details__info__phone">{user.phone}</p>
-     <p className="user__details__info__location">{user.location.city}, {user.location.country}</p>
-     <Link to="/users" className="user__details__info__link">Back to users</Link>
-    </div>
-   </div>
-  </div>
+ 
+  <Profile />
+  // <div className="user">
+  //   { 
+  //   Number(index) + 1 > 1 ?  // If the id is greater than 1 then display the previous user link
+  //   <Link to={`${Number(index) - 1}`} > Previous user </Link> : null
+  //   }
+  //  <h1>User Full Details</h1>
+  //  <figure>
+  //   <img src={imgSrc} alt="user" />
+  //  </figure>
+  //  <h3>{fullName}</h3>
+  //  <h3>@{userName}</h3>
+  //  <h3>{email}</h3>
+  //  <h3>{phone}</h3>
+  //  <h3>{location}</h3>
+  //  <h3>{age}</h3>
+  // </div>
  );
 }
 
