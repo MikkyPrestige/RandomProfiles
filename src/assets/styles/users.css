@@ -115,7 +115,6 @@
   text-align: center;
 }
 
-
 .search__box {
   display: flex;
   justify-content: center;
@@ -136,6 +135,18 @@
   text-align: center;
   text-decoration: none;
   animation: search 1s ease-in-out infinite;
+}
+
+.search__link:hover {
+  background-color: #1e90ff;
+  color: #fff;
+  animation: none;
+}
+
+.search__link:active {
+  background-color: #70a1ff;
+  color: #fff;
+  animation: none;
 }
 
 @keyframes search {

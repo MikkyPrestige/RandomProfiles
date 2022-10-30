@@ -6,9 +6,11 @@ const Search = () => {
   const [homeUsers, setHomeUsers] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
+  // const [searchResults, setSearchResults] = useState([]);
+
 
   useEffect(() => {
-    fetch(`https://randomuser.me/api/?results=3`)
+    fetch(`https://randomuser.me/api/?results=5`)
       .then((res) => res.json())
       .then((data) => {
         setHomeUsers(data.results);
@@ -23,11 +25,19 @@ const Search = () => {
     setSelectedCategory(e.target.value);
   };
 
+  // useEffect(() => {
+  //   const results = homeUsers.filter((user) =>
+  //     user.name.first.toLowerCase().includes(searchInput.toLowerCase())
+  //   );
+  //   setSearchResults(results);
+
+
   return (
     <div className="filter">
+      <h1 className="filter__heading">Search Users</h1>
       <div className="filter__search">
-        <input type="text" placeholder="Search by name" className="filter__search__input" onChange={handleSearchInput} />
-        <select className="filter__search__select" onChange={handleSelectedCategory}>
+        <input type="text" placeholder="Search by category" className="filter__search__input" onChange={handleSearchInput} />
+        <select className="filter__search__input" onChange={handleSelectedCategory}>
           <option value="">Select a category</option>
           <option value="name">Name</option>
           <option value="full-name">Full Name</option>
@@ -36,8 +46,8 @@ const Search = () => {
           <option value="country">Country</option>
         </select>
       </div>
-      <div className="filter__results">
-        <div className="filter__users">
+      <div className="filtered__results">
+        <div className="filtered__users">
           {homeUsers
             .filter((user) => {
               if (searchInput === "" || selectedCategory === "") {
@@ -57,22 +67,21 @@ const Search = () => {
               }
             })
             .map((user) => (
-              <div className="filter__users__user" key={user.login.uuid}>
-                <div className="filter__users__user__img">
-                  <img src={user.picture.thumbnail} alt={user.name.first} />
+              <div className="filtered__users--wrapper" key={user.login.uuid}>
+                <div className="filtered__user__img--box">
+                  <img src={user.picture.large} alt={user.name.first} className="filtered__user--img" />
                 </div>
-                <div className="filter__users__user__info">
-                  <div className="filter__users__user__info__name">
-                    <span className="filter__users__user__info__name__first">{user.name.first}</span>
-                    <span className="filter__users__user__info__name__last">{user.name.last}</span>
-                  </div>
-                  <div className="filter__users__user__info">{user.email}</div>
-                  <div className="filter__users__user__info__phone">{user.phone}</div>
-                  <div className="filter__users__user__info__age">{user.dob.age}</div>
-                  <div className="filter__users__user__info__national">{user.nat}</div>
-                  <div className="filter__users__user__info__country">{user.location.country}</div>
-                  <div className="filter__users__user__info__location">{user.location.city}</div>
-                  <div className="filter__users__user__info__timezone">{user.location.timezone.offset}</div>
+                <div className="filtered__users__info">
+                  <p className="filtered__user__info"><strong>First Name: </strong>{user.name.first}</p>
+                  <p className="filtered__user__info"><strong>Last Name: </strong>{user.name.last}</p>
+                  <p className="filtered__user__info"><strong>Username </strong>@{user.login.username}</p>
+                  <p className="filtered__user__info"><strong>Email: </strong>{user.email}</p>
+                  <p className="filtered__user__info"><strong>Phone: </strong>{user.phone}</p>
+                  <p className="filtered__user__info"><strong>Age: </strong>{user.dob.age}</p>
+                  <p className="filtered__user__info"><strong>Nationality: </strong>{user.nat}</p>
+                  <p className="filtered__user__info"><strong>Country: </strong>{user.location.country}</p>
+                  <p className="filtered__user__info"><strong>City: </strong>{user.location.city}</p>
+                  <p className="filtered__user__info"><strong>Timezone: </strong>{user.location.timezone.offset}</p>
                 </div>
               </div>
             ))}
