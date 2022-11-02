@@ -1,19 +1,18 @@
+// SEARCH COMPONENT - This component is the Search section of the app that displays the searched random users to the app UI.
 
 import { useEffect, useState } from "react";
 import "../assets/styles/search.css";
 
 const Search = () => {
-  const [homeUsers, setHomeUsers] = useState([]);
+  const [searchedUsers, setSearchedUsers] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  // const [searchResults, setSearchResults] = useState([]);
-
 
   useEffect(() => {
     fetch(`https://randomuser.me/api/?results=5`)
       .then((res) => res.json())
       .then((data) => {
-        setHomeUsers(data.results);
+        setSearchedUsers(data.results);
       });
   }, [searchInput]);
 
@@ -25,13 +24,6 @@ const Search = () => {
     setSelectedCategory(e.target.value);
   };
 
-  // useEffect(() => {
-  //   const results = homeUsers.filter((user) =>
-  //     user.name.first.toLowerCase().includes(searchInput.toLowerCase())
-  //   );
-  //   setSearchResults(results);
-
-
   return (
     <div className="filter">
       <h1 className="filter__heading">Search Users</h1>
@@ -41,14 +33,12 @@ const Search = () => {
           <option value="">Select a category</option>
           <option value="name">Name</option>
           <option value="full-name">Full Name</option>
-          <option value="email">Gender</option>
-          <option value="age">Age</option>
           <option value="country">Country</option>
         </select>
       </div>
       <div className="filtered__results">
         <div className="filtered__users">
-          {homeUsers
+          {searchedUsers
             .filter((user) => {
               if (searchInput === "" || selectedCategory === "") {
                 return null;
@@ -74,10 +64,11 @@ const Search = () => {
                 <div className="filtered__users__info">
                   <p className="filtered__user__info"><strong>First Name: </strong>{user.name.first}</p>
                   <p className="filtered__user__info"><strong>Last Name: </strong>{user.name.last}</p>
-                  <p className="filtered__user__info"><strong>Username </strong>@{user.login.username}</p>
+                  <p className="filtered__user__info"><strong>Username: </strong>@{user.login.username}</p>
                   <p className="filtered__user__info"><strong>Email: </strong>{user.email}</p>
                   <p className="filtered__user__info"><strong>Phone: </strong>{user.phone}</p>
                   <p className="filtered__user__info"><strong>Age: </strong>{user.dob.age}</p>
+                  <p className="filtered__user__info"><strong>Gender: </strong>{user.gender}</p>
                   <p className="filtered__user__info"><strong>Nationality: </strong>{user.nat}</p>
                   <p className="filtered__user__info"><strong>Country: </strong>{user.location.country}</p>
                   <p className="filtered__user__info"><strong>City: </strong>{user.location.city}</p>
@@ -86,6 +77,10 @@ const Search = () => {
               </div>
             ))}
         </div>
+      </div>
+      <div className="note">
+        This page is solely for the implementation of Nested Route in the app.
+        The searched results is incorrect!!!
       </div>
     </div>
   );

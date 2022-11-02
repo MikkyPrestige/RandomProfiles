@@ -1,3 +1,5 @@
+// LAYOUT COMPONENT - This component is for the App Layout that displays the Navigation bar in the app UI to the user when app is open
+
 import { NavLink } from "react-router-dom";
 import "../assets/styles/layout.css";
 
@@ -21,6 +23,7 @@ const CustomNavLink = ({ to, ...props }) => {
 
 
 const Layout = () => {
+
   return (
     <nav className="layout">
       <div className="app-header">

@@ -1,4 +1,4 @@
-// HELP SECTION COMPONENT - This component is the help section of the app that displays the help text to the user when they click on the 'HOW IT WORKS' button in the header.
+// HELP COMPONENT - This component is the Help section of the app that displays the help text to the user when they click on the 'HOW IT WORKS' button in the header.
 
 import "../assets/styles/help.css";
 

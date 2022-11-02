@@ -1,0 +1,21 @@
+.error__wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error__heading {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 5rem;
+}
+
+.error__text {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: red;
+  font-style: italic;
+}

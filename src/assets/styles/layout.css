@@ -1,7 +1,6 @@
 .layout {
   background-color: #dfe4ea;
-  height: 2rem;
-  padding: 2rem 1rem;
+  padding: 0rem 1rem;
   color: #222;
   display: flex;
   align-items: center;
@@ -16,11 +15,24 @@
   display: flex;
   align-items: center;
   list-style: none;
+  flex-wrap: wrap;
 }
 
 .nav__item {
-  margin: 0 1rem;
   font-size: 1.2rem;
   font-weight: 800;
+  padding: 1rem 1.5rem;
   text-transform: uppercase;
+}
+
+.attribution {
+  text-align: center;
+}
+
+.footer {
+  color: #222;
+  text-decoration: none;
+  cursor: pointer;
+  font-style: italic;
+  font-weight: 600;
 }

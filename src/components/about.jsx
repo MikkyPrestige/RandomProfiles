@@ -1,3 +1,5 @@
+// ABOUT SECTION COMPONENT - This component is the About section of the app that displays the ABout info of the app to the user when they click on the 'ABOUT US' button in the header.
+
 import "../assets/styles/about.css";
 
 const About = () => {

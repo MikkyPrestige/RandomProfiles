@@ -1,21 +1,19 @@
+// HOME COMPONENT - This component is the Home section of the app that displays app Home page on load and when the 'HOME' button in the header is clicked
+
 import { useNavigate } from "react-router-dom";
 import "../assets/styles/home.css";
-import Avatar from "./avatar";
+import { Avatar } from "./avatar";
 import FirstFemale from "../assets/img/female-1.jpg";
 import SecondFemale from "../assets/img/female-2.jpg";
 import ThirdFemale from "../assets/img/female-3.jpg";
 import FirstMale from "../assets/img/male-1.jpg";
 import SecondMale from "../assets/img/male-2.jpg";
 
-
 const Home = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const getStarted = () => {
-    // window.location.href = "/users"; // Redirect the user to the users component when the get started button is clicked 
     navigate("/users"); // Redirect the user to the users component when the get started button is clicked
   };
-
-
 
   return (
     <div className="home">

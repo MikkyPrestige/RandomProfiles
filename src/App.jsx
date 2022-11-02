@@ -1,24 +1,16 @@
 import * as React from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Route, Routes } from "react-router-dom";
-import ErrorFallback from "./components/errorFallback";
-import Home from "./components/home";
-import Layout from "./components/layout";
-import Help from "./components/help";
-import Users from "./components/users";
-import About from "./components/about";
-import Error from "./components/error";
-import Search from "./components/search";
+import { Layout, Home, Users, Search, Help, About, Error, ErrorFallBack, Footer } from "./components";
 
 
-function App() {
+const App = () => {
 
    return (
       <div className="App">
          <main>
-            <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <ErrorBoundary FallbackComponent={ErrorFallBack}>
                <Layout />
-               {/* <Filter /> */}
                <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="users">
@@ -30,6 +22,7 @@ function App() {
                   <Route path="*" element={<Error />} />
                </Routes>
             </ErrorBoundary>
+            <Footer />
          </main>
       </div>
    );

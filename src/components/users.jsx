@@ -1,12 +1,7 @@
-/*==========================================
-Set up client-side pagination using randomuser.me API in one of your routes called Users - you should show the prev, next, and navigation to individual pages 1, 2, 3, 4, 5 etc. Implement accessibility and disabled state and API loading states. ============================================ */
-import { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
-// import { Link, Outlet } from "react-router-dom";
-// import Profile from "./profile";
-// import UserDetails from "./userDetails";
-// import Filter from "./filter";
+// USERS COMPONENT - This component is the User section of the app that displays the Random Users fetched from the API call to the user in the app UI when they click on the 'USERS' button in the header.
+
 import "../assets/styles/users.css";
+import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 const Users = () => {  // 1. Create a component called Users
@@ -28,10 +23,9 @@ const Users = () => {  // 1. Create a component called Users
         setError(err);   // 12. Set the error state variable to the error message
         setLoading(false);   // 13. Set the loading state variable to false after the API call is made
       });
-  }, [page]);  // 14. Add the page state variable to the dependency array so that the useEffect hook will run when the page state variable changes 
-  // localStorage.setItem("user", JSON.stringify(users));  // 15. Store the users state variable in local storage called user so that it can be accessed by the UserDetails component 
+  }, [page]);  // 14. Add the page state variable to the dependency array so that the useEffect hook will run when the page state variable changes.
 
-  return (  // 17. Return the users state variable to the UI
+  return (
     <div className="users">
       <h1 className="users__heading">Random Users found</h1>
       <div className="search__box">
@@ -82,7 +76,7 @@ const Users = () => {  // 1. Create a component called Users
         <p className="pagination"> Pages: {page} of {pages}  </p> {/* 24. Display the page state variable and the pages state variable */}
       </div>
 
-      <Outlet /> {/* 25. Render the UserDetails component */}
+      <Outlet />
     </div>
   );
 }

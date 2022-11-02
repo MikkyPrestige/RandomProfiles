@@ -1,3 +1,4 @@
+// ERRORFALLBACK COMPONENT - This component is for the Error fall back message on the ErrorBoundary router which displays the error message on the screen when there is a error in the code
 
 const ErrorFallback = ({ error }) => {
   return (
