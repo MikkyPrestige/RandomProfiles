@@ -12,13 +12,12 @@ const Users = () => {  // 1. Create a component called Users
   const [pages] = useState(10);  // 6. Create a state variable called pages and set it to 10
 
   useEffect(() => {   // 6. Create a useEffect hook that will fetch the users from the API
-    setLoading(true);    // 7. Set the loading state variable to true before the API call is made
-    fetch(`https://randomuser.me/api/?page=${page}&results=9`)   // 8. Fetch the users from the API using the page state variable to determine the page number to fetch from the API
-      .then((response) => response.json())  // 9. Convert the response to JSON
-      .then((data) => {    // 10. Use the data from the API call to set the users state variable to the results from the API call
-        setUsers(data.results);  // 10. Set the users state variable to the data returned from the API call
-        setLoading(false);   // 11. Set the loading state variable to false after the API call is made
-        // console.log(data);  // 12. Log the data returned from the API call to the console
+    setLoading(true);    // 7. Set the loading state variable to true before the API call is made  
+    fetch(`https://randomuser.me/api/?page=${page}&results=9`)   // 8. Fetch the users from the API using the page state variable to determine the page number to fetch from the API  
+      .then((response) => response.json())  // 9. Convert the response to JSON 
+      .then((data) => {    // 10. Use the data from the API call to set the users state variable to the results from the API call  
+        setUsers(data.results);  // 10. Set the users state variable to the data returned from the API call 
+        setLoading(false);   // 11. Set the loading state variable to false after the API call is made  
       })
       .catch((err) => {   // 12. Catch any errors that may occur during the API call and set the error state variable to the error message
         setError(err);   // 12. Set the error state variable to the error message

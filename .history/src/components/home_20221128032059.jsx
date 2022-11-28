@@ -12,7 +12,7 @@ import SecondMale from "../assets/img/male-2.jpg";
 const Home = () => {
   const navigate = useNavigate();
   const getStarted = () => {
-    navigate("/profile"); // Redirect the user to the users component when the get started button is clicked
+    navigate("/users"); // Redirect the user to the users component when the get started button is clicked
   };
 
   return (
@@ -20,21 +20,12 @@ const Home = () => {
       <div className="home__container">
         <div className="desc">
           <h1 className="desc__heading">Random people finder</h1>
-          <p className="desc__paragraph">
-            Finding great friends isn't easy, and it doesn't have to be. With
-            Random User, you can connect with people all over the world for no
-            cost. Random Users is the best place to find new friends all around
-            the world. Join now!
-          </p>
-          <button onClick={getStarted} className="desc__cta">
-            Go to Profile
-          </button>
+          <p className="desc__paragraph">Finding great friends isn't easy, and it doesn't have to be. With Random User, you can connect with people all over the world for no cost. Random Users is the best place to find new friends all around the world. Join now!</p>
+          <button onClick={getStarted} className="desc__cta">Get started</button>
         </div>
         <div className="home__wrapper">
           <h2 className="home__heading">Random friend finder</h2>
-          <p className="home__text">
-            Find new friends from every country and every race of the world
-          </p>
+          <p className="home__text">Find new friends from every country and every race of the world</p>
           <div className="home__img">
             <Avatar image={FirstFemale} alt="Female One" />
             <Avatar image={SecondFemale} alt="Female Two" />
@@ -43,9 +34,15 @@ const Home = () => {
             <Avatar image={SecondMale} alt="Male Two" />
           </div>
         </div>
+        {/* // sign in button */}
+        <div className="home__signIn">
+          <button onClick={getStarted} className="home__signIn-btn">Sign in</button>
+          </div>
       </div>
     </div>
   );
 };
 
 export default Home;
+
+

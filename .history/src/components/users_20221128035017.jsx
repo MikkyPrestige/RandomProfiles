@@ -18,7 +18,6 @@ const Users = () => {  // 1. Create a component called Users
       .then((data) => {    // 10. Use the data from the API call to set the users state variable to the results from the API call
         setUsers(data.results);  // 10. Set the users state variable to the data returned from the API call
         setLoading(false);   // 11. Set the loading state variable to false after the API call is made
-        // console.log(data);  // 12. Log the data returned from the API call to the console
       })
       .catch((err) => {   // 12. Catch any errors that may occur during the API call and set the error state variable to the error message
         setError(err);   // 12. Set the error state variable to the error message
@@ -40,7 +39,7 @@ const Users = () => {  // 1. Create a component called Users
           {users.map((user) => {
             const { name, gender, nat, login, dob, picture, phone, email, location } = user;
             return (
-              <li key={login.uuid} className="user__items">
+              <li key={name.id} className="user__items">
                 <img src={picture.large} alt={name.first} className="user__img" />
                 <p className="user__item"><strong>Name: </strong>{name.title}, {name.first} {name.last}</p>
                 <p className="user__item"><strong>Gender: </strong>{gender}</p>

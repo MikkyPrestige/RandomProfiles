@@ -27,7 +27,7 @@ const Home = () => {
             the world. Join now!
           </p>
           <button onClick={getStarted} className="desc__cta">
-            Go to Profile
+            Get started
           </button>
         </div>
         <div className="home__wrapper">

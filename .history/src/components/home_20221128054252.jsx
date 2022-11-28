@@ -9,6 +9,7 @@ import ThirdFemale from "../assets/img/female-3.jpg";
 import FirstMale from "../assets/img/male-1.jpg";
 import SecondMale from "../assets/img/male-2.jpg";
 
+
 const Home = () => {
   const navigate = useNavigate();
   const getStarted = () => {
@@ -20,21 +21,12 @@ const Home = () => {
       <div className="home__container">
         <div className="desc">
           <h1 className="desc__heading">Random people finder</h1>
-          <p className="desc__paragraph">
-            Finding great friends isn't easy, and it doesn't have to be. With
-            Random User, you can connect with people all over the world for no
-            cost. Random Users is the best place to find new friends all around
-            the world. Join now!
-          </p>
-          <button onClick={getStarted} className="desc__cta">
-            Go to Profile
-          </button>
+          <p className="desc__paragraph">Finding great friends isn't easy, and it doesn't have to be. With Random User, you can connect with people all over the world for no cost. Random Users is the best place to find new friends all around the world. Join now!</p>
+          <button onClick={getStarted} className="desc__cta">Get started</button>
         </div>
         <div className="home__wrapper">
           <h2 className="home__heading">Random friend finder</h2>
-          <p className="home__text">
-            Find new friends from every country and every race of the world
-          </p>
+          <p className="home__text">Find new friends from every country and every race of the world</p>
           <div className="home__img">
             <Avatar image={FirstFemale} alt="Female One" />
             <Avatar image={SecondFemale} alt="Female Two" />
@@ -49,3 +41,5 @@ const Home = () => {
 };
 
 export default Home;
+
+
