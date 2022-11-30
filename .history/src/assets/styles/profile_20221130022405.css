@@ -1,0 +1,9 @@
+.profile {
+  background-color: #fff;
+  padding: 2rem;
+  height: 100vh;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
