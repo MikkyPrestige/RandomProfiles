@@ -1,0 +1,132 @@
+.users {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.users__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.users__heading {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.users__list {
+  list-style: none;
+  padding: 2rem;
+  margin: 1rem auto;
+  width: 85%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  grid-gap: 3rem;
+}
+
+.user__items {
+  border-bottom: 1px solid #ccc;
+}
+
+.user__item {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.user__img {
+  width: 80%;
+  border-radius: 10%;
+  margin-left: 1rem;
+}
+
+/* BUTTON BELOW */
+.btn__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.active:hover {
+  background-color: #ced6e0;
+  color: #1e90ff;
+}
+
+.active:active {
+  background-color: #70a1ff;
+  color: #ced6e0;
+}
+
+.btn__array {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.search__box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search__link {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  color: #1e90ff;
+  border-radius: 1rem;
+  width: 18rem;
+  padding: 0.5rem;
+  margin: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  animation: search 1s ease-in-out infinite;
+}
+
+.search__link:hover {
+  background-color: #1e90ff;
+  color: #fff;
+  animation: none;
+}
+
+.search__link:active {
+  background-color: #70a1ff;
+  color: #fff;
+  animation: none;
+}
+
+@keyframes search {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

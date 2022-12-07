@@ -1,0 +1,131 @@
+.layout {
+  background-color: #dfe4ea;
+  width: 100%;
+}
+
+.layout__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  /* padding-right: 2rem; */
+}
+
+.layout__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.layout__header--title {
+  font-style: oblique;
+  padding-left: 2rem;
+}
+
+.layout--btn {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+  background-color: #f1f2f5;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.menuNav {
+  position: fixed;
+  top: 6rem;
+  right: 0;
+  width: 0;
+  max-width: 10rem;
+  height: 100%;
+  background-color: #f1f2f5;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.menuNav.showMenu {
+  width: 100%;
+  transition: all 2s ease-in;
+  -webkit-transition: all 2s ease-in;
+  -moz-transition: all 2s ease-in;
+  -ms-transition: all 2s ease-in;
+  -o-transition: all 2s ease-in;
+}
+
+.nav__items {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  /* flex-wrap: wrap; */
+}
+
+.nav__item {
+  font-size: 1.2rem;
+  padding: 1rem;
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  color: #0046dc;
+}
+
+.nav__item:hover {
+  color: #7dd5c6;
+}
+
+.nav__items--large {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav__item--large {
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: .2rem;
+  color: #0046dc;
+}
+
+.attribution {
+  text-align: center;
+}
+
+.footer {
+  color: #222;
+  text-decoration: none;
+  cursor: pointer;
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* MEDIA QUERY TO HIDE THE NAVIGATION BAR HAMBURGER ON LARGE SCREENS */
+
+@media screen and (min-width: 768px) {
+  .small {
+    display: none;
+  }
+
+  .large {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .small {
+    display: block;
+  }
+
+  .large {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .nav__item--large {
+    font-size: 1rem;
+    margin-right: -.5rem;
+  }
+
+}
