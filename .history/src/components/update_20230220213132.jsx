@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "../assets/styles/update.css";
 
 const UpdatePassword = () => {
-  const [user, setUser] = useState(null);
+  const [ setUser] = useState(null);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
@@ -78,8 +78,10 @@ const UpdatePassword = () => {
             </button>
           </div>
         </form>
+        <Link to="/profileDisplay" className="update__link">
+          Back to profile
+        </Link>
       </div>
-      <Link to="/profileDisplay" className="back">Back to profile</Link>
     </div>
   );
 };

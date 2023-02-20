@@ -72,13 +72,13 @@ const LayoutSmall = () => {
             >
               About
             </CustomNavLink>
-            <CustomNavLink
+            {/* <CustomNavLink
               to="help"
               className="nav__item"
               onClick={() => closeNav()}
             >
               Features
-            </CustomNavLink>
+            </CustomNavLink> */}
           </div>
         </nav>
       </header>
@@ -104,9 +104,9 @@ const LayoutLarge = () => {
             <CustomNavLink to="about" className="nav__item--large">
               About
             </CustomNavLink>
-            <CustomNavLink to="help" className="nav__item--large">
+            {/* <CustomNavLink to="help" className="nav__item--large">
               Features
-            </CustomNavLink>
+            </CustomNavLink> */}
           </div>
         </nav>
       </header>

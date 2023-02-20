@@ -6,7 +6,7 @@ import {
   Home,
   Users,
   Search,
-  Help,
+  // Help,
   About,
   Error,
   ErrorFallBack,
@@ -33,7 +33,7 @@ const App = () => {
             <Route path="profileDisplay" element={<ProfileDisplay />} />
             <Route path="register" element={<Register />} />
             <Route path="update" element={<UpdatePassword />} />
-            <Route path="help" element={<Help />} />
+            {/* <Route path="help" element={<Help />} /> */}
             <Route path="about" element={<About />} />
             <Route path="*" element={<Error />} />
           </Routes>

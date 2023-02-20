@@ -6,15 +6,6 @@ import "../assets/styles/layout.css";
 import { MdClose } from "react-icons/md";
 import { FiMenu } from "react-icons/fi";
 
-const Layout = () => {
-  return (
-    <div>
-      <LayoutSmall />
-      <LayoutLarge />
-    </div>
-  );
-};
-
 const CustomNavLink = ({ to, ...props }) => {
   let activeStyle = {
     textDecoration: "underline",
@@ -53,9 +44,9 @@ const LayoutSmall = () => {
         <nav className="layout__nav">
           <button onClick={toggleNav} className="layout--btn">
             {nav ? (
-              <MdClose className="layout--btn--icon" />
+              <MdClose className="layout__btn--icon" />
             ) : (
-              <FiMenu className="layout--btn--icon" />
+              <FiMenu className="layout__btn--icon" />
             )}
           </button>
           <div className={`menuNav ${nav ? " showMenu" : ""}`}>
@@ -81,13 +72,13 @@ const LayoutSmall = () => {
             >
               About
             </CustomNavLink>
-            <CustomNavLink
+            {/* <CustomNavLink
               to="help"
               className="nav__item"
               onClick={() => closeNav()}
             >
               Features
-            </CustomNavLink>
+            </CustomNavLink> */}
           </div>
         </nav>
       </header>
@@ -113,12 +104,21 @@ const LayoutLarge = () => {
             <CustomNavLink to="about" className="nav__item--large">
               About
             </CustomNavLink>
-            <CustomNavLink to="help" className="nav__item--large">
+            {/* <CustomNavLink to="help" className="nav__item--large">
               Features
-            </CustomNavLink>
+            </CustomNavLink> */}
           </div>
         </nav>
       </header>
+    </div>
+  );
+};
+
+const Layout = () => {
+  return (
+    <div>
+      <LayoutSmall />
+      <LayoutLarge />
     </div>
   );
 };
@@ -137,7 +137,7 @@ const Back = () => {
 
   const style = {
     border: "none",
-    borderRadius: ".5rem",
+    borderRadius: "1rem",
     padding: " .5rem",
     fontSize: "1rem",
     fontWeight: "600",
