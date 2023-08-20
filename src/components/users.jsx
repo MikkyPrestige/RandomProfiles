@@ -46,7 +46,7 @@ const Users = () => {
           <h2>{error.message}, Please check your internet connection.</h2>
         )}
         <ul className="users__list">
-          {users.map((user) => {
+          {users.map((user, id) => {
             const {
               name,
               gender,
@@ -59,7 +59,7 @@ const Users = () => {
               location,
             } = user;
             return (
-              <li key={login.uuid} className="user__items">
+              <li key={id} className="user__items">
                 <img
                   src={picture.large}
                   alt={name.first}

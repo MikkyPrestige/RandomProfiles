@@ -1,5 +1,4 @@
 // HOME COMPONENT - This component is the Home section of the app that displays app Home page on load and when the 'HOME' button in the header is clicked
-
 import { Link, useNavigate } from "react-router-dom";
 import "../assets/styles/home.css";
 import { Avatar } from "./avatar";
@@ -19,7 +18,7 @@ const Home = () => {
     <div className="home">
       <div className="home__container">
         <div className="desc">
-          <h1 className="desc__heading">Random people finder</h1>
+          <h1 className="desc__heading">Find Random People Here!</h1>
           <p className="desc__paragraph">
             Finding great friends isn't easy, and it doesn't have to be. With
             Random User, you can connect with people all over the world for no
@@ -37,7 +36,7 @@ const Home = () => {
           </p>
         </div>
         <div className="home__wrapper">
-          <h2 className="home__heading">Random friend finder</h2>
+          <h2 className="home__heading">RandomProfiles</h2>
           <p className="home__text">
             Find new friends from every country and every race of the world
           </p>

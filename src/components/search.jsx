@@ -26,7 +26,7 @@ const Search = () => {
 
   return (
     <div className="filter">
-      <h1 className="filter__heading">Search Users</h1>
+      <h1 className="filter__heading">Search For Users</h1>
       <div className="filter__search">
         <input
           type="text"
@@ -134,10 +134,6 @@ const Search = () => {
               </div>
             ))}
         </div>
-      </div>
-      <div className="note">
-        This page is solely for the implementation of Nested Route in the app.
-        The searched results is incorrect!!!
       </div>
     </div>
   );

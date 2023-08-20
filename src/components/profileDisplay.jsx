@@ -5,8 +5,6 @@ import {
   provider,
   signInWithRedirect,
   onAuthStateChanged,
-  // RecaptchaVerifier,
-  // signInWithPhoneNumber,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
@@ -18,10 +16,8 @@ import { Back } from "./layout";
 const ProfileDisplay = () => {
   const [user, setUser] = useState(null);
   const [email, setEmail] = useState("");
-  // const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  // const [phoneError, setPhoneError] = useState("");
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -32,41 +28,6 @@ const ProfileDisplay = () => {
       }
     });
   }, []);
-
-  // handle invisible RecaptchaVerifier
-  // window.recaptchaVerifier = new RecaptchaVerifier( 'sign-in-btn', {
-  //     'size': "invisible",
-  //     'callback': (response) => {
-  //       // reCAPTCHA solved, allow signInWithPhoneNumber.
-  //       onSignInSubmit();
-  //     }
-  //   }, auth);
-
-  // const recaptchaResponse = grecaptcha.getResponse(recaptchaWidgetId);
-
-  // const onSignInSubmit = (e) => {
-  //   e.preventDefault();
-  //   const appVerifier = window.recaptchaVerifier;
-  //   signInWithPhoneNumber(auth, phoneNumber, appVerifier).then(
-  //     (confirmationResult) => {
-  //       // SMS sent. Prompt user to type the code from the message, then sign the user in with confirmationResult.confirm(code).
-  //       const code = window.prompt(
-  //         "Enter the code that was sent to your mobile device."
-  //       );
-  //       confirmationResult
-  //         .confirm(code)
-  //         .then((result) => {
-  //           // User signed in successfully.
-  //           // const user = result.user;
-  //           // ...
-  //         })
-  //         .catch((phoneError) => {
-  //           // User couldn't sign in (bad verification code?)
-  //           setPhoneError(phoneError.message);
-  //         });
-  //     }
-  //   );
-  // };
 
   // handle sign In
   const signIn = (e) => {
@@ -185,23 +146,6 @@ const ProfileDisplay = () => {
                   Sign In
                 </button>
                 <p className="or">Or</p>
-                {/* <h2 className="sign__heading">
-                  Sign in with your phone number
-                </h2> */}
-                {/* <form className="sign__form" id="sign-in-btn">
-                  <input
-                    type="tel"
-                    name="phoneNumber"
-                    placeholder="Enter Phone Number"
-                    className="sign__input"
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                    required
-                  />
-                  <button type="submit" onClick={onSignInSubmit} className="sign__btn">
-                    Sign In
-                  </button>
-                  {phoneError && <p className="error">{phoneError}</p>}
-                </form> */}
                 <h2 className="sign__heading">
                   Sign in with your email and password
                 </h2>

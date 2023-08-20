@@ -37,10 +37,10 @@
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
-  padding: .5rem;
+  padding: 0.5rem;
   display: flex;
   justify-content: flex-start;
-  gap: .5rem;
+  gap: 0.5rem;
   font-size: 1rem;
 }
 
@@ -100,19 +100,16 @@
   cursor: pointer;
   text-align: center;
   text-decoration: none;
-  animation: search 1s ease-in-out infinite;
 }
 
 .search__link:hover {
   background-color: #1e90ff;
   color: #fff;
-  animation: none;
 }
 
 .search__link:active {
   background-color: #70a1ff;
   color: #fff;
-  animation: none;
 }
 
 @media screen and (max-width: 1000px) {
@@ -136,7 +133,7 @@
   .user__item {
     flex-direction: column;
     align-items: center;
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -147,30 +144,16 @@
 
   .btn__array {
     padding: 0.3rem;
-    margin: .2rem;
-    font-size: .8rem;
+    margin: 0.2rem;
+    font-size: 0.8rem;
   }
 
   .pagination {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 
   .search__link {
     width: 15rem;
-    font-size: .8rem;
-  }
-}
-
-@keyframes search {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.2);
-  }
-
-  100% {
-    transform: scale(1);
+    font-size: 0.8rem;
   }
 }

@@ -1,7 +1,7 @@
 // LAYOUT COMPONENT - This component is for the App Layout that displays the Navigation bar in the app UI to the user when app is open
 
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../assets/styles/layout.css";
 import { MdClose } from "react-icons/md";
 import { FiMenu } from "react-icons/fi";
@@ -39,7 +39,9 @@ const LayoutSmall = () => {
     <div className="layout small">
       <header className="layout__header">
         <div className="layout__header--text">
-          <h1 className="layout__header--title">RanDomPeopleApp</h1>
+          <Link to="/" className="layout__header--title">
+            RandomProfiles
+          </Link>
         </div>
         <nav className="layout__nav">
           <button onClick={toggleNav} className="layout--btn">
@@ -65,20 +67,6 @@ const LayoutSmall = () => {
             >
               Users
             </CustomNavLink>
-            <CustomNavLink
-              to="about"
-              className="nav__item"
-              onClick={() => closeNav()}
-            >
-              About
-            </CustomNavLink>
-            {/* <CustomNavLink
-              to="help"
-              className="nav__item"
-              onClick={() => closeNav()}
-            >
-              Features
-            </CustomNavLink> */}
           </div>
         </nav>
       </header>
@@ -91,7 +79,9 @@ const LayoutLarge = () => {
     <div className="layout large">
       <header className="layout__header">
         <div className="layout__header--text">
-          <h1 className="layout__header--title">RanDomPeopleApp</h1>
+          <Link to="/" className="layout__header--title">
+            RandomProfiles
+          </Link>
         </div>
         <nav className="layout__nav">
           <div className="nav__items--large">
@@ -101,12 +91,6 @@ const LayoutLarge = () => {
             <CustomNavLink to="profile" className="nav__item--large">
               Users
             </CustomNavLink>
-            <CustomNavLink to="about" className="nav__item--large">
-              About
-            </CustomNavLink>
-            {/* <CustomNavLink to="help" className="nav__item--large">
-              Features
-            </CustomNavLink> */}
           </div>
         </nav>
       </header>

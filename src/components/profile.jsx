@@ -5,8 +5,6 @@ import {
   getRedirectResult,
   onAuthStateChanged,
   createUserWithEmailAndPassword,
-  // RecaptchaVerifier,
-  // signInWithPhoneNumber,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
 } from "../config";
@@ -16,7 +14,9 @@ import "../assets/styles/profile.css";
 import { Back } from "./layout";
 
 const Profile = () => {
+  // eslint-disable-next-line
   const [user, setUser] = useState(null);
+  // eslint-disable-next-line
   const [signedIn, setSignedIn] = useState(false);
   // sign in form state
   const [email, setEmail] = useState("");

@@ -6,15 +6,12 @@ import {
   Home,
   Users,
   Search,
-  // Help,
-  About,
   Error,
   ErrorFallBack,
   Profile,
   ProfileDisplay,
   Register,
   UpdatePassword,
-  Footer,
 } from "./components";
 
 const App = () => {
@@ -33,12 +30,9 @@ const App = () => {
             <Route path="profileDisplay" element={<ProfileDisplay />} />
             <Route path="register" element={<Register />} />
             <Route path="update" element={<UpdatePassword />} />
-            {/* <Route path="help" element={<Help />} /> */}
-            <Route path="about" element={<About />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </ErrorBoundary>
-        <Footer />
       </main>
     </div>
   );
